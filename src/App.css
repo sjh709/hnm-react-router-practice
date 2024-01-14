@@ -35,3 +35,24 @@
 .search-box input:focus {
   outline: none;
 }
+
+.card {
+  border: none !important;
+  margin-bottom: 10px;
+}
+.card:hover {
+  transform: scale(1.1);
+  z-index: 1;
+}
+
+.choice {
+  font-size: 11px;
+  color: #63786a;
+  font-weight: bold;
+  height: 20px;
+}
+
+.new-product {
+  font-size: 11px;
+  height: 20px;
+}
