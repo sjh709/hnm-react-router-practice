@@ -66,3 +66,22 @@
   display: flex;
   justify-content: center;
 }
+
+.product-img {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.product-info {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.drop-down {
+  margin-top: 20px;
+}
+
+.add-button {
+  margin-top: 20px;
+  width: 100%;
+}
