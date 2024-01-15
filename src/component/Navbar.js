@@ -4,7 +4,7 @@ import { faUser } from '@fortawesome/free-regular-svg-icons';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 
-const Navbar = () => {
+const Navbar = ({ authenticate, setAuthenticate }) => {
   const menuList = [
     '여성',
     'Divided',
@@ -30,10 +30,17 @@ const Navbar = () => {
   return (
     <div>
       <div>
-        <div className='login-button' onClick={goToLogin}>
-          <FontAwesomeIcon icon={faUser} />
-          <div>로그인</div>
-        </div>
+        {authenticate ? (
+          <div className='login-button' onClick={() => setAuthenticate(false)}>
+            <FontAwesomeIcon icon={faUser} />
+            <div>로그아웃</div>
+          </div>
+        ) : (
+          <div className='login-button' onClick={goToLogin}>
+            <FontAwesomeIcon icon={faUser} />
+            <div>로그인</div>
+          </div>
+        )}
       </div>
       <div className='nav-section'>
         <img
