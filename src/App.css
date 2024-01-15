@@ -1,26 +1,45 @@
-.login-button {
-  display: flex;
-  justify-content: flex-end;
-  margin: 20px;
-  cursor: pointer;
+body {
+  font-family: sans-serif;
 }
 
-.nav-section {
+.nav-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.nav-header * {
+  margin-right: 10px;
+  margin-top: 20px;
+}
+
+.nav-logo {
   display: flex;
   justify-content: center;
+  margin-bottom: 20px;
 }
 
 .menu-list {
   display: flex;
   list-style-type: none;
+  padding: 20px;
 }
-.menu-list li {
-  padding: 10px;
+
+.menu-list li a {
+  text-decoration: none;
+  color: black;
+  margin-left: 20px;
 }
 
 .menu-area {
   display: flex;
   justify-content: center;
+  margin-bottom: 10px;
+}
+
+.burger-menu {
+  margin-left: 20px;
 }
 
 .search-box {
@@ -84,4 +103,20 @@
 .add-button {
   margin-top: 20px;
   width: 100%;
+}
+
+.hide {
+  visibility: hidden;
+}
+
+@media screen and (max-width: 63rem) {
+  .hide {
+    visibility: visible;
+  }
+  .menu-list {
+    display: none;
+  }
+  .search-box {
+    display: none;
+  }
 }

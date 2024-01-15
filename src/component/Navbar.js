@@ -1,8 +1,8 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import { useNavigate } from 'react-router-dom';
+import { faSearch, faBars } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate, Link } from 'react-router-dom';
 
 const Navbar = ({ authenticate, setAuthenticate }) => {
   const menuList = [
@@ -29,29 +29,36 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
   };
   return (
     <div>
-      <div>
+      <div className='nav-header'>
+        <div className='burger-menu hide'>
+          <FontAwesomeIcon icon={faBars} />
+        </div>
         {authenticate ? (
-          <div className='login-button' onClick={() => setAuthenticate(false)}>
+          <div onClick={() => setAuthenticate(false)}>
             <FontAwesomeIcon icon={faUser} />
-            <div>로그아웃</div>
+            <span style={{ cursor: 'pointer' }}>로그아웃</span>
           </div>
         ) : (
-          <div className='login-button' onClick={goToLogin}>
+          <div onClick={goToLogin}>
             <FontAwesomeIcon icon={faUser} />
-            <div>로그인</div>
+            <span style={{ cursor: 'pointer' }}>로그인</span>
           </div>
         )}
       </div>
-      <div className='nav-section'>
-        <img
-          width={100}
-          src='https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/H%26M-Logo.svg/2560px-H%26M-Logo.svg.png'
-        />
+      <div className='nav-logo'>
+        <Link to='/'>
+          <img
+            width={100}
+            src='https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/H%26M-Logo.svg/2560px-H%26M-Logo.svg.png'
+          />
+        </Link>
       </div>
       <div className='menu-area'>
         <ul className='menu-list'>
           {menuList.map((menu, index) => (
-            <li key={index}>{menu}</li>
+            <li key={index}>
+              <a href='#'>{menu}</a>
+            </li>
           ))}
         </ul>
         <div className='search-box'>
