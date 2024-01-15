@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
 import { faSearch, faBars } from '@fortawesome/free-solid-svg-icons';
@@ -15,6 +15,7 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
     'Sale',
     '지속가능성',
   ];
+  const [width, setWidth] = useState(0);
   const navigate = useNavigate();
   const goToLogin = () => {
     navigate('/login');
@@ -29,9 +30,19 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
   };
   return (
     <div>
+      <div className='side-menu' style={{ width: width }}>
+        <button className='closebtn' onClick={() => setWidth(0)}>
+          &times;
+        </button>
+        <div className='side-menu-list'>
+          {menuList.map((menu, index) => (
+            <button key={index}>{menu}</button>
+          ))}
+        </div>
+      </div>
       <div className='nav-header'>
         <div className='burger-menu hide'>
-          <FontAwesomeIcon icon={faBars} />
+          <FontAwesomeIcon icon={faBars} onClick={() => setWidth(250)} />
         </div>
         {authenticate ? (
           <div onClick={() => setAuthenticate(false)}>
