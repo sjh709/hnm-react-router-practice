@@ -3,10 +3,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
 import { faSearch, faBars } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate, Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { authenticateAction } from '../redux/actions/authenticateAction';
 
-const Navbar = ({ authenticate }) => {
+const Navbar = () => {
   const menuList = [
     '여성',
     'Divided',
@@ -20,6 +20,7 @@ const Navbar = ({ authenticate }) => {
   const [width, setWidth] = useState(0);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const authenticate = useSelector((state) => state.auth.authenticate); // true면 로그인이 됨, false면 로그인이 안됨
 
   const goToLogin = () => {
     navigate('/login');
