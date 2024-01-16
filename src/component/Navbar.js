@@ -3,8 +3,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
 import { faSearch, faBars } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate, Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { authenticateAction } from '../redux/actions/authenticateAction';
 
-const Navbar = ({ authenticate, setAuthenticate }) => {
+const Navbar = ({ authenticate }) => {
   const menuList = [
     '여성',
     'Divided',
@@ -17,6 +19,8 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
   ];
   const [width, setWidth] = useState(0);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const goToLogin = () => {
     navigate('/login');
   };
@@ -27,6 +31,9 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
       // url을 바꿔준다.
       navigate(`/?q=${keyword}`);
     }
+  };
+  const goToLogout = () => {
+    dispatch(authenticateAction.logout());
   };
   return (
     <div>
@@ -45,7 +52,7 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
           <FontAwesomeIcon icon={faBars} onClick={() => setWidth(250)} />
         </div>
         {authenticate ? (
-          <div onClick={() => setAuthenticate(false)}>
+          <div onClick={goToLogout}>
             <FontAwesomeIcon icon={faUser} />
             <span style={{ cursor: 'pointer' }}>로그아웃</span>
           </div>
